@@ -72,7 +72,7 @@ export default function Sidebar() {
             !isSideBarActive ? "hidden" : "block"
           } font-extrabold text-2xl text-gray-900`}
         >
-          RATIONALE
+          ACME
         </h1>
 
         <button
@@ -125,7 +125,7 @@ export default function Sidebar() {
 
       {/* FOOTER */}
       <div className={`${!isSideBarActive? "hidden" : "block"} mb-10`}>
-        <p className="text-center text-xs text-gray-500">&copy; 2024 Rationale</p>
+        <p className="text-center text-xs text-gray-500">&copy; 2024 ACME</p>
       </div>
     </div>
   );
