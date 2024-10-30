@@ -24,7 +24,7 @@ export default function DashTopNav() {
   return (
     <div className='flex justify-between items-center w-full mb-7'>
         {/* Left Side */}
-        <div className='flex justify-between g-5 items-center'>
+        <div className='flex justify-between gap-5 items-center'>
           <button className='px-3 py-3 bg-gray-100 rounded-full hover:bg-blue-100 mx-4' onClick={() => {setOnToggle(!onToggle)}}>
             <Menu className=""/>
           </button>
