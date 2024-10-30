@@ -1,18 +1,23 @@
 'use client'
-import { Menu } from "lucide-react";
+import { Archive, Icon, Layout, LucideClipboardList, LucideIcon, LucideLogOut, LucideSettings, Menu, User } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 
+interface SideNaveLinkInterface {href:string; Icon:LucideIcon; label:string }
 
-const SideNavLink = (props:any) => {
+const SideNavLink = ({href, Icon, label }:SideNaveLinkInterface) => {
 
   const pathName = usePathname();
-  const isActive = (pathName === props.href) || (pathName === "/dashboard");
+  const isActive = (pathName === href);
 
   return (
-    <Link href={"/"}>
+    <Link href={href}>
       <div className={`cursor-pointer flex items-center justify-start px-8 py-4 hover:text-blue-500 hover:bg-blue-100 gap-3 transition-colors ${isActive ? "bg-blue-200 text-white": ""}`}>
+        <Icon className="w-6 h-6 !text-gray-700"/>
+        <span className={`font-medium text-gray-700`}>
+          {label}
+        </span>
       </div>
     </Link>
   )
@@ -32,10 +37,17 @@ export default function SideNav() {
 
       {/* Nav Links */}
       <div className="flex-grow mt-8">
+        <SideNavLink href={"/dashboard"} Icon={Layout} label={"Dashboard"}/>
+        <SideNavLink href={"/dashboard/inventory"} Icon={Archive} label={"Inventory"}/>
+        <SideNavLink href={"/dashboard/products"} Icon={LucideClipboardList} label={"Products"}/>
+        <SideNavLink href={"/dashboard/users"} Icon={User} label={"Users"}/>
+        <SideNavLink href={"/dashboard/expenses"} Icon={Layout} label={"Expenses"}/>
       </div>
 
       {/* Bottom */}
       <div className="flex-grow mt-8">
+        <SideNavLink href={"/dashboard/settings"} Icon={LucideSettings} label={"Settings"}/>
+        <SideNavLink href={"/dashboard/settings"} Icon={LucideLogOut} label={"Logout"}/>
       </div>
     </div>
   )
