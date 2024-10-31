@@ -1,4 +1,6 @@
 import { UUID } from "crypto";
+import { createApi, CreateApi, fetchBaseQuery } from "@reduxjs/toolkit/query";
+import build from "next/dist/build";
 
 export interface Product{
     productId: UUID;
@@ -42,3 +44,12 @@ export interface DashboardMetric{
     expenseSummary: ExpenseSummary[];
     expenseByCategorySummary: ExpenseByCategorySummary[];
 }
+
+export const api = createApi({
+    baseQuery: fetchBaseQuery({ baseUrl: process.env.NEXT_PUBLIC_API_BASE_URL}),
+    reducerPath: "api",
+    tagTypes: [],
+    endpoints: (build) => ({}),
+})
+
+export const {} = api;

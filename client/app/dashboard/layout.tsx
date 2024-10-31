@@ -2,6 +2,7 @@ import "@/app/ui/globals.css";
 import SideNav from "../ui/sideNav";
 import DashTopNav from "../ui/dashTopNav";
 import { Metadata } from "next";
+import DashboardWrapper from "../ui/dashboard/wrapper";
 
 export const DashboardMetaData: Metadata = {
     title: "Dashboard",
@@ -10,12 +11,6 @@ export const DashboardMetaData: Metadata = {
 
 export default function Layout({children}:{ children: React.ReactNode}) {
   return (
-    <div className="flex bg-gray-50 text-gray-900 w-full min-h-screen">
-      <SideNav/>
-      <main className="flex flex-col w-full h-full py-7 px-9 bg-gray-50 md:pl-24">
-        <DashTopNav/>
-        {children}
-      </main>
-    </div>
+    <DashboardWrapper>{children}</DashboardWrapper>
   );
 }
