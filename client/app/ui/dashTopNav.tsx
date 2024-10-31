@@ -2,30 +2,37 @@
 import { Bell, Menu, Settings, Sun } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
+import { useAppSelector } from "../redux";
+import { useDispatch } from "react-redux";
+import { setIsDarkModeOn, setIsSideNavOpen } from "@/state";
 
 export default function DashTopNav() {
 
   const [onToggle, setOnToggle] = useState(false);
   const [onLightMode, setOnLightMode] = useState(true);
   
+  const isSideNavOpen = useAppSelector((state) => state.global.isSideNavOpen);
+  const isDarkModeOn = useAppSelector((state) => state.global.isDarkModeOn);
+
+  const dispatch = useDispatch();
 
   /* Toggles the side navigation display, on and off */
     function toggleNav () 
     {
-      setOnToggle(!onToggle);
+      dispatch(setIsSideNavOpen(!isSideNavOpen))
     }
 
     /* Toggles between the light mode and dark mode */
     function toggleLightMode()
     {
-      setOnLightMode(!onLightMode);
+      dispatch(setIsDarkModeOn(!isDarkModeOn));
     }
   
   return (
     <div className='flex justify-between items-center w-full mb-7'>
         {/* Left Side */}
         <div className='flex justify-between gap-5 items-center'>
-          <button className='px-3 py-3 bg-gray-100 rounded-full hover:bg-blue-100 mx-4' onClick={() => {setOnToggle(!onToggle)}}>
+          <button className='px-3 py-3 bg-gray-100 rounded-full hover:bg-blue-100 mx-4' onClick={() => dispatch(setIsSideNavOpen(!isSideNavOpen))}>
             <Menu className=""/>
           </button>
           <div className="relative">
@@ -40,7 +47,7 @@ export default function DashTopNav() {
         <div className="flex items-center justify-between gap-5">
           <div className="hidden md:flex justify-between items-center gap-5">
             <div>
-              <button onClick={() => {setOnLightMode(!onLightMode)}}>
+              <button onClick={() => dispatch(setIsDarkModeOn(!isDarkModeOn))}>
                 <Sun className="cursor-pointer text-gray-500 ml-4" size={24}/>
               </button>
             </div>
