@@ -1,5 +1,5 @@
 'use client'
-import { Bell, Menu, Settings, Sun } from "lucide-react";
+import { Bell, Menu, Moon, Settings, Sun } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import { useAppSelector } from "../redux";
@@ -48,7 +48,11 @@ export default function DashTopNav() {
           <div className="hidden md:flex justify-between items-center gap-5">
             <div>
               <button onClick={() => dispatch(setIsDarkModeOn(!isDarkModeOn))}>
-                <Sun className="cursor-pointer text-gray-500 ml-4" size={24}/>
+                {
+                  !isDarkModeOn ? <Sun className="cursor-pointer text-gray-500 ml-4" size={24}/>
+                  :
+                  <Moon className="cursor-pointer text-gray-500 ml-4" size={24}/>
+                }
               </button>
             </div>
             <div className="relative">
