@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "@/app/ui/globals.css";
 import Dashboardcontainer from "@/app/ui/dashboard/dashboardcontainer";
+import { Providers } from "./state_manager/provider";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -17,9 +18,11 @@ export default function RootLayout({
       <body
         className={`antialiased`}
       >
-        <Dashboardcontainer>
-          {children}
-        </Dashboardcontainer>
+        <Providers>
+          <Dashboardcontainer>
+            {children}
+          </Dashboardcontainer>
+        </Providers>
       </body>
     </html>
   );

@@ -3,15 +3,23 @@
 import Link from "next/link";
 import { Icon, source } from "@/app/ui/icons/icons";
 
+import { useDispatch } from "react-redux";
+import { 
+    toggleSideNav } from "@/app/state_manager/state_variables/NavStates/navstate";
+
+
 
 
 export default function Topnav() {
+      
+  const Dispatch = useDispatch();
+
   return (
     <header className="">
         <nav className="flex items-center justify-between w-full mb-7">
             {/* Left Nav Section */}
             <div className="flex items-center justify-between gap-5">
-                <button className="px-3 py-3 w-[44px] h-[44px]  bg-gray-100 rounded-full hover:bg-blue-100" onClick={()=>{}}>
+                <button className="px-3 py-3 w-[44px] h-[44px]  bg-gray-100 rounded-full hover:bg-blue-100" onClick={()=>Dispatch(toggleSideNav())}>
                     <Icon h={20} w={20} icon={source.menu} className=""/>
                 </button>
             
