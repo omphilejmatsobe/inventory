@@ -2,9 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-*, *::before, *::after
+*,*::before,*::after
 {
   box-sizing: border-box;
+  transition: 0.25s ease;
 }
 
 html, body, #root, .app
@@ -12,6 +13,6 @@ html, body, #root, .app
   width: 100%;
   height: 100%;
   @apply text-sm;
+  @apply bg-gray-50;
   @apply text-gray-900;
-  @apply bg-gray-500s;
 }
