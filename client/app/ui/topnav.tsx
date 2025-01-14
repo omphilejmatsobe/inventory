@@ -4,8 +4,7 @@ import Link from "next/link";
 import { Icon, source } from "@/app/ui/icons/icons";
 
 import { useDispatch } from "react-redux";
-import { 
-    toggleSideNav } from "@/app/state_manager/state_variables/NavStates/navstate";
+import { toggleSideNav } from "@/app/state_manager/state_variables/NavStates/navstate";
 
 
 
@@ -42,7 +41,7 @@ export default function Topnav() {
             {/* Right Nav Section */}
             <div className="flex items-center justify-between gap-5">
                 <div className="hidden md:flex justify-between items-center gap-5">
-                    <button onClick={()=>{}} className="relative">
+                    <button onClick={()=>{}} className="relative w-[24px] h-[24px]">
                         <Icon h={24} w={24} icon={source.bell} className="cursor-pointer"/>
                         <span className="absolute -top-2 -right-2 inline-flex items-center justify-center
                                          rounded-full px-[0.4rem] py-1 text-xs font-semibold leading-none 
@@ -60,7 +59,9 @@ export default function Topnav() {
                     </div>
                 </div>
                 <Link href="/settings">
-                    <Icon h={24} w={24} icon={source.settings} className="cursor-pointer"/>
+                    <div className="w-[24px] h-[24px] rounded-full">
+                        <Icon h={24} w={24} icon={source.settings} className="cursor-pointer"/>
+                    </div>
                 </Link>
             </div>
         </nav>

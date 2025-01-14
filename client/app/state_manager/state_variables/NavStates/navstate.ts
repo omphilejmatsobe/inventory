@@ -3,12 +3,14 @@
 import { createSlice } from "@reduxjs/toolkit"
 
 export interface NavStates{
-    currentState: boolean
+    sideNavState: boolean,
+    darkModeState: boolean
 }
 
 const initialState: NavStates =
 {
-    currentState: true
+    sideNavState: true,
+    darkModeState: false
 }
 
 export const navSlice = createSlice(
@@ -17,9 +19,11 @@ export const navSlice = createSlice(
         initialState,
         reducers:
         {
-            openSideNav: (state:NavStates) => { state.currentState = true},
-            closeSideNav: (state) => { state.currentState = false },
-            toggleSideNav: (state) => { state.currentState = !state.currentState }
+            openSideNav: (state:NavStates) => { state.sideNavState = true},
+            closeSideNav: (state) => { state.sideNavState = false },
+            toggleSideNav: (state) => { state.sideNavState = !state.sideNavState },
+            
+            toggleDarkMode: (state) => { state.darkModeState = !state.darkModeState}
         }
     }
 )
