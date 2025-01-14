@@ -11,10 +11,11 @@ export default function Dashboardcontainer({children}:{children:ReactNode}) {
   const SideNavOpenState = useSelector((state:RootState) => state.stateRecoder.sideNavState);
 
   return (
-    <div className={`flex bg-gray-50 text-gray-900 w-full min-h-screen`}>
+    <div className={`flex flex-col bg-gray-50 text-gray-900 w-full min-h-screen`}>
+      <Topnav/>
       <Sidenav/>
-      <main className={`flex flex-col w-full h-full py-7 px-9 bg-gray-50 ${SideNavOpenState == true ? "md:pl-24": "md:pl-24 "}`}>
-        <Topnav/>
+      <main className={`flex flex-col w-full h-full py-7 px-9 bg-gray-50 ${SideNavOpenState == true ? "md:pl-80": "md:pl-24 "}`}>
+        
         {children}
       </main>
     </div>

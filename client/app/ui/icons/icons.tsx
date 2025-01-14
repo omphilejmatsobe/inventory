@@ -13,6 +13,13 @@ export enum source
   bell = "/icons/bell.svg",
   search = "/icons/search.svg",
   settings = "/icons/settings.svg",
+  dashboard = "/icons/dashboard.svg",
+  warehouse = "/icons/warehouse.svg",
+  clipboard = "/icons/clipboard.svg",
+  user = "/icons/user.svg",
+  sliders = "/icons/sliders.svg",
+  dollar = "/icons/dollar.svg",
+  logout = "/icons/logout.svg",
 }
 
 
