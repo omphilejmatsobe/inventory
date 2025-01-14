@@ -28,5 +28,5 @@ export const navSlice = createSlice(
     }
 )
 
-export const {openSideNav, closeSideNav, toggleSideNav} = navSlice.actions;
+export const {openSideNav, closeSideNav, toggleSideNav, toggleDarkMode} = navSlice.actions;
 export default navSlice.reducer;

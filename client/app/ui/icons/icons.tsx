@@ -20,6 +20,8 @@ export enum source
   sliders = "/icons/sliders.svg",
   dollar = "/icons/dollar.svg",
   logout = "/icons/logout.svg",
+  moon = "/icons/moon.svg",
+  sun = "/icons/sun.svg",
 }
 
 

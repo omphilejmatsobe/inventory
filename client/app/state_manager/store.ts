@@ -5,7 +5,7 @@ import navReducer from "@/app/state_manager/state_variables/NavStates/navstate"
 
 export const store = configureStore({
     reducer: {
-        stateRecoder: navReducer
+        stateRecoder: navReducer,
     }
 })
 

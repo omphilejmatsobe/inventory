@@ -68,7 +68,7 @@ export default function Sidenav() {
         <div className="w-10 h-10 flex items-center">
           Logo
         </div>
-        <h3 className={`font-extrabold text-2xl ${SideNavOpenState == true ? "block" : "hidden"}`}>CarNova</h3>
+        <h3 className={`font-extrabold text-2xl ${SideNavOpenState == true ? "block" : "hidden"}`}>CarHub</h3>
         <button className="md:hidden w-[44px] h-[44px] px-3 py-3 bg-gray-100 rounded-full hover:bg-blue-100" onClick={()=>Dispatch(toggleSideNav())}>
           <Icon h={20} w={20} icon={source.menu} className=""/>
         </button>

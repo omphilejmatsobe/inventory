@@ -4,8 +4,9 @@ import Link from "next/link";
 import { Icon, source } from "@/app/ui/icons/icons";
 
 import { useDispatch, useSelector } from "react-redux";
-import { toggleSideNav } from "@/app/state_manager/state_variables/NavStates/navstate";
+import { toggleDarkMode, toggleSideNav } from "@/app/state_manager/state_variables/NavStates/navstate";
 import { RootState } from "@/app/state_manager/store";
+import Image from "next/image";
 
 
 
@@ -13,6 +14,7 @@ import { RootState } from "@/app/state_manager/store";
 export default function Topnav() {
 
   const SideNavOpenState = useSelector((state:RootState) => state.stateRecoder.sideNavState);
+  const DarkModeOn = useSelector((state:RootState) => state.stateRecoder.darkModeState);
   const Dispatch = useDispatch();
 
   return (
@@ -43,6 +45,9 @@ export default function Topnav() {
             {/* Right Nav Section */}
             <div className="flex items-center justify-between gap-5">
                 <div className="hidden md:flex justify-between items-center gap-5">
+                    <button onClick={()=>Dispatch(toggleDarkMode())} className="relative w-[24px] h-[24px]">
+                        <Icon h={24} w={24} icon={DarkModeOn ? source.sun : source.moon} className="cursor-pointer"/>
+                    </button>
                     <button onClick={()=>{}} className="relative w-[24px] h-[24px]">
                         <Icon h={24} w={24} icon={source.bell} className="cursor-pointer"/>
                         <span className="absolute -top-2 -right-2 inline-flex items-center justify-center
@@ -54,8 +59,8 @@ export default function Topnav() {
                     </button>
                     <div className="w-0 h-7 border border-solid border-l border-gray-300 mx-3"/>
                     <div className="flex items-center gap-3 cursor-pointer ">
-                        <div className="w-9 h-9">
-                            image
+                        <div className="w-9 h-9 rounded-full bg-none overflow-hidden">
+                            <Image width={36} height={36} src="/profile/profile.jpg" alt=""/>
                         </div>
                         <span className="font-semibold">Roy Payne</span>
                     </div>
