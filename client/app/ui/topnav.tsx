@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { toggleDarkMode, toggleSideNav } from "@/app/state_manager/state_variables/NavStates/navstate";
 import { RootState } from "@/app/state_manager/store";
 import Image from "next/image";
+import { useState } from "react";
 
 
 
@@ -16,6 +17,11 @@ export default function Topnav() {
   const SideNavOpenState = useSelector((state:RootState) => state.stateRecoder.sideNavState);
   const DarkModeOn = useSelector((state:RootState) => state.stateRecoder.darkModeState);
   const Dispatch = useDispatch();
+
+  const [notificationsOpen, setNotificationOpen] = useState(false);
+
+  const toggleNotification = () => setNotificationOpen(!notificationsOpen);
+
 
   return (
     <header className={`flex flex-col w-full items-center py-4 px-9 bg-white ${SideNavOpenState == true ? "md:pl-80": "md:pl-24 "} fixed shadow-sm`}>
@@ -46,10 +52,10 @@ export default function Topnav() {
             <div className="flex items-center justify-between gap-5">
                 <div className="hidden md:flex justify-between items-center gap-5">
                     <button onClick={()=>Dispatch(toggleDarkMode())} className="relative w-[24px] h-[24px]">
-                        <Icon h={24} w={24} icon={DarkModeOn ? source.sun : source.moon} className="cursor-pointer"/>
+                        <Icon h={24} w={24} icon={DarkModeOn ? source.sun : source.moon} className="cursor-pointer opacity-75"/>
                     </button>
-                    <button onClick={()=>{}} className="relative w-[24px] h-[24px]">
-                        <Icon h={24} w={24} icon={source.bell} className="cursor-pointer"/>
+                    <button onClick={toggleNotification} className="relative w-[24px] h-[24px] rounded-lg" >
+                        <Icon h={24} w={24} icon={source.bell} className="cursor-pointer opacity-75"/>
                         <span className="absolute -top-2 -right-2 inline-flex items-center justify-center
                                          rounded-full px-[0.4rem] py-1 text-xs font-semibold leading-none 
                                          text-red-100 bg-red-400"
@@ -57,6 +63,19 @@ export default function Topnav() {
                         3
                         </span>
                     </button>
+                    <div className={`hidden ${notificationsOpen ? "lg:flex" : "" } absolute w-96 h-fit top-[76px] rounded-lg shadow-lg bg-white right-56 flex-col`}>
+                        <div className="items-center flex flex-row justify-between py-4 px-6 border-b-[1px] border-b-gray-200 h-fit w-full">
+                            <h3 className="font-semibold text-lg text-gray-700">Notifications</h3>
+                            <div className="py-1 px-2 rounded-lg rounder-lg bg-blue-600">
+                                <h4 className="font-semibold text-sm text-white">
+                                 {"0"}{" Unread"}
+                                </h4>
+                            </div>
+                        </div>
+                        <div className="w-full h-full flex items-center justify-center">
+
+                        </div>
+                    </div>
                     <div className="w-0 h-7 border border-solid border-l border-gray-300 mx-3"/>
                     <div className="flex items-center gap-3 cursor-pointer ">
                         <div className="w-9 h-9 rounded-full bg-none overflow-hidden">
@@ -67,7 +86,7 @@ export default function Topnav() {
                 </div>
                 <Link href="/settings">
                     <div className="w-[24px] h-[24px] rounded-full">
-                        <Icon h={24} w={24} icon={source.settings} className="cursor-pointer"/>
+                        <Icon h={24} w={24} icon={source.settings} className="cursor-pointer opacity-75"/>
                     </div>
                 </Link>
             </div>
